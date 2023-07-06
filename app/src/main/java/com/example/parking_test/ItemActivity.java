@@ -39,7 +39,6 @@ public class ItemActivity extends AppCompatActivity {
     private ActivityItemBinding binding;
     private List<Item> itemList;
     private ItemDao itemDao;
-    private int i=0;
     private boolean getItem = true;
 
 
@@ -117,11 +116,14 @@ public class ItemActivity extends AppCompatActivity {
         public void onBindViewHolder(@NonNull RecyclerviewAdapter.ViewHolder holder, int position) {
             String reTextViewsItemCode;
             reTextViewsItemCode = itemList.get(position).getItemCode();
+            //수정할 부분
+            String itemTime = itemList.get(position).getItemTime();
+            String itemTimer = itemList.get(position).getItemTime();
 
             holder.reTextViewsItemCode.setText((CharSequence) itemList.get(position).getItemCode());
             holder.reTextViewsItemName.setText((CharSequence) itemList.get(position).getItemName());
-            holder.reTextViewItemTime.setText((CharSequence) itemList.get(position).getItemTime());
-            // 출차 retextview 추가해야할수있음
+            holder.reTextViewItemTime.setText(itemTime);
+            holder.reTextViewItemTimer.setText(itemTimer);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -140,12 +142,14 @@ public class ItemActivity extends AppCompatActivity {
             private TextView reTextViewsItemCode;
             private TextView reTextViewsItemName;
             private TextView reTextViewItemTime;
+
+            private TextView reTextViewItemTimer;
             public ViewHolder(View view){
                 super(view);
                 reTextViewsItemCode = view.findViewById(R.id.reTextViewsItemCode);
                 reTextViewsItemName = view.findViewById(R.id.reTextViewsItemName);
                 reTextViewItemTime = view.findViewById(R.id.reTextViewTime);
-                // 출차 retextview 추가해야할수있음
+                reTextViewItemTimer = view.findViewById(R.id.reTextViewTimer);
             }
         }
 

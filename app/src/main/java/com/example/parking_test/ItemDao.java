@@ -40,5 +40,7 @@ public interface ItemDao {
     @Query("SELECT COUNT(ItemCode) FROM Item")
     int countCode();
 
+    @Query("SELECT * FROM item WHERE itemCode = :itemCode")
+    Item getItemByCode(String itemCode);
 }
 
