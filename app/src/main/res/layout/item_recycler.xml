@@ -27,7 +27,7 @@
             android:id="@+id/reTextViewTime"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
-            android:text="시간"
+            android:text="출입시간"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -37,16 +37,30 @@
             app:layout_constraintVertical_bias="0.177" />
 
         <TextView
-            android:id="@+id/reTextViewTimer"
+            android:id="@+id/reTextViewOutTime"
             android:layout_width="80dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="시간"
+            android:text="출차시간"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.177" />
+
+        <TextView
+            android:id="@+id/TextViewItemAmount"
+            android:layout_width="157dp"
+            android:layout_height="32dp"
+            android:text="금액"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.937"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.818" />
+
 
         <TextView
             android:id="@+id/reTextViewsItemNamet"
@@ -73,7 +87,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.818" />
-
         <TextView
             android:id="@+id/reTextViewsItemCode"
             android:layout_width="55dp"

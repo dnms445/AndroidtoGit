@@ -1,7 +1,5 @@
 package com.example.parking_test;
 
-import android.widget.TextView;
-
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -18,13 +16,20 @@ public class Item {
     private String ItemDate;
     private String ItemTime;
 
+    private String ItemOutTime;
+
+    private String ItemAmount;
 
 
-    public Item(String ItemCode, String ItemName, String ItemDate, String ItemTime) {
+
+
+    public Item(String ItemCode, String ItemName, String ItemDate, String ItemTime,String ItemOutTime, String ItemAmount) {
         this.ItemCode = ItemCode;
         this.ItemName = ItemName;
         this.ItemDate = ItemDate;
         this.ItemTime = ItemTime;
+        this.ItemOutTime = ItemOutTime;
+        this.ItemAmount = ItemAmount;
     }
 
     public int getId() {
@@ -52,14 +57,13 @@ public class Item {
     }
 
     public String getItemDate(){
-        /*long now;
+        long now;
         Date date;
-        SimpleDateFormat nowDate = new SimpleDateFormat("yyyy-MM-dd-hh:mm:ss");
+        SimpleDateFormat nowDate = new SimpleDateFormat("yyyy-MM-dd-hh:mm");
 
         now = System.currentTimeMillis();
         date = new Date(now);
         ItemDate = nowDate.format(date);
-        return (ItemDate);*/
         return ItemDate;
     }
 
@@ -75,6 +79,11 @@ public class Item {
         this.ItemTime = ItemTime;
     }
 
+    public String getItemOutTime() {return ItemOutTime;}
+    public void setItemOutTime(String sItemOuttime) {this.ItemOutTime = ItemOutTime;}
+
+    public String getItemAmount() {return ItemAmount;}
+
     @Override
     public String toString() {
         return "Item{" +
@@ -83,9 +92,8 @@ public class Item {
                 ", ItemName='" + ItemName + '\'' +
                 ", ItemDate='" + ItemDate + '\'' +
                 ", ItemTime=" + ItemTime + '\'' +
+                ", ItemOutTime" + ItemOutTime + '\'' +
+                ", ItemAmount" + ItemAmount + '\'' +
                 '}';
-    }
-
-    public void setNowDate(String nowDate) {
     }
 }

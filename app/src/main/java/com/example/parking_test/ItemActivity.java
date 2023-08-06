@@ -29,8 +29,6 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.List;
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class ItemActivity extends AppCompatActivity {
     String shared = "file";
@@ -118,12 +116,14 @@ public class ItemActivity extends AppCompatActivity {
             reTextViewsItemCode = itemList.get(position).getItemCode();
             //수정할 부분
             String itemTime = itemList.get(position).getItemTime();
-            String itemTimer = itemList.get(position).getItemTime();
+            String itemOutTime = itemList.get(position).getItemOutTime();
+            String itemAmount = itemList.get(position).getItemAmount();
 
             holder.reTextViewsItemCode.setText((CharSequence) itemList.get(position).getItemCode());
             holder.reTextViewsItemName.setText((CharSequence) itemList.get(position).getItemName());
             holder.reTextViewItemTime.setText(itemTime);
-            holder.reTextViewItemTimer.setText(itemTimer);
+            holder.reTextViewOutTime.setText(itemOutTime);
+            holder.TextViewItemAmount.setText(itemAmount);
 
             holder.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -143,13 +143,16 @@ public class ItemActivity extends AppCompatActivity {
             private TextView reTextViewsItemName;
             private TextView reTextViewItemTime;
 
-            private TextView reTextViewItemTimer;
+            private TextView reTextViewOutTime;
+
+            private TextView TextViewItemAmount;
             public ViewHolder(View view){
                 super(view);
                 reTextViewsItemCode = view.findViewById(R.id.reTextViewsItemCode);
                 reTextViewsItemName = view.findViewById(R.id.reTextViewsItemName);
                 reTextViewItemTime = view.findViewById(R.id.reTextViewTime);
-                reTextViewItemTimer = view.findViewById(R.id.reTextViewTimer);
+                reTextViewOutTime = view.findViewById(R.id.reTextViewOutTime);
+                TextViewItemAmount = view.findViewById(R.id.TextViewItemAmount);
             }
         }
 
@@ -201,7 +204,9 @@ public class ItemActivity extends AppCompatActivity {
                     String ItemName = jsonObject.getString("ItemName");
                     String ItemDate = jsonObject.getString("ItemDate");
                     String ItemTime = jsonObject.getString("ItemTime");
-                    Item item = new Item(ItemCode, ItemName, ItemDate, ItemTime);
+                    String ItemOutTime = jsonObject.getString("ItemOutTime");
+                    String ItemAmount = jsonObject.getString("ItemAmount");
+                    Item item = new Item(ItemCode, ItemName, ItemDate, ItemTime, ItemOutTime, ItemAmount);
                     itemList.add(item);
                 }
 
