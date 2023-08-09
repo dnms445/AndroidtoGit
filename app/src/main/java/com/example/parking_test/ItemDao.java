@@ -37,8 +37,9 @@ public interface ItemDao {
     @Query("UPDATE Item SET ItemName = :ItemName, ItemDate = :ItemDate, ItemTime = :ItemTime, ItemOutTime = :ItemOutTime, ItemAmount = :ItemAmount WHERE ItemCode = :countCode")
     void updateCode( String countCode, String ItemName, String ItemDate, String ItemTime, String ItemOutTime, String ItemAmount);
 
-    @Query("UPDATE Item SET ItemOutTime = :ItemOutTime  WHERE ItemCode = :countCode")
-    void updateTimeCode( String countCode, String ItemOutTime);
+    @Query("UPDATE Item SET ItemOutTime = :ItemOutTime, ItemAmount = :ItemAmount  WHERE ItemCode = :countCode")
+    void updateTimeCode( String countCode, String ItemOutTime, String ItemAmount);
+
 
 
     @Query("SELECT COUNT(ItemCode) FROM Item")
@@ -46,6 +47,5 @@ public interface ItemDao {
 
     @Query("SELECT * FROM item WHERE itemCode = :itemCode")
     Item getItemByCode(String itemCode);
-
 }
 

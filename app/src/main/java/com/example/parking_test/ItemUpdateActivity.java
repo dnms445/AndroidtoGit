@@ -145,33 +145,32 @@ public class ItemUpdateActivity extends AppCompatActivity {
                 String itemOutTime = outTime();
                 String getTime = itemList.get(0).getItemTime();
 
-                String result;
+                String itemAmount;
 
                 // 기존 데이터 조회
                 Item updateTime = itemDao.getItemByCode(itemCode);
+                try {
+                    itemAmount = calTime(getTime, itemOutTime);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                    itemAmount = "Error";
+                }
 
                 // 데이터 수정
                 if (updateTime != null) {
                     updateTime.setItemTime(itemOutTime);
 
-                    itemDao.updateTimeCode(itemCode, itemOutTime);
+                    itemDao.updateTimeCode(itemCode, itemOutTime, itemAmount);
                 }
-                try {
-                    result = calTime(getTime, itemOutTime);
-                } catch (ParseException e) {
-                    e.printStackTrace();
-                    result = "Error";
-                }
-                editTextAmount.setText(result);
 
-
-
+                editTextAmount.setText(itemAmount);
                 editTextOutTime.setText(itemOutTime);
 
 
                 Toast.makeText(ItemUpdateActivity.this, "출차 되었습니다.", Toast.LENGTH_SHORT).show();
 
             }
+
         });
 
         buttonItemOut.setOnClickListener(new View.OnClickListener() {
@@ -231,23 +230,18 @@ public class ItemUpdateActivity extends AppCompatActivity {
 
         // 결과물인 시간을 받아서 금액으로 변환
         int hourlyRate = 1000;
-        int parkingTime = (int) (lastDiff / (60 * 1000));
-        int roundedTime = (parkingTime / 30) *30;
-        int totalPay = 0;
+        int totalPay = 1000;
+
+        int parkingTime = (int) (lastDiff / (60 * 100));
+        int roundedTime = (parkingTime / 30) * 30;
+
         for( int i = 0; i < roundedTime; i += 30)
         {
             totalPay += hourlyRate;
-            hourlyRate += 1000;
-
         }
+
         String formattedPay = String.format("%d", totalPay);
-
-
-
-
-
         // 결과를 다시 String 형태로 변환하여 반환
-
         return formattedPay;
     }
 }
